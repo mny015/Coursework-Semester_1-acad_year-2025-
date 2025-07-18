@@ -12,18 +12,17 @@
 ## Academic Context
 **Course:** Introduction to Programming  
 **Assignment:** Cybersecurity Tool Development  
-**Objective:** Demonstrate programming concepts learned throughout the module by creating a practical cybersecurity tool  
-**Academic Year:** 2025 - Semester 1  
+**Objective:** Demonstrate programming concepts learned by creating a practical cybersecurity tool  
 
 ## Description
-This project implements a basic reverse shell system as a coursework assignment for the "Introduction to Programming" module. The assignment required creating a cybersecurity tool to demonstrate and utilize the programming concepts learned throughout the course. 
+As a course assignment for the "Introduction to Programming" module, this project creates a simple reverse shell system. In order to demonstrate and apply the programming concepts that were taught throughout the course, the assignment required the creation of a cybersecurity tool. 
 
-This educational tool consists of a server that listens for incoming connections and a client that connects back to the server, allowing remote command execution. The project showcases various programming fundamentals including network programming, socket communication, error handling, and cross-platform compatibility.
+The components of this educational tool are a client that connects back to the server to enable remote command execution and a server that listens for incoming connections. Network programming, socket communication, error handling, and cross-platform compatibility are just a few of the programming fundamentals that are demonstrated in this project.
 
-**⚠️ ACADEMIC DISCLAIMER**: This tool was developed for coursework and educational purposes only. It demonstrates programming concepts in a cybersecurity context and should only be used for authorized educational testing.
+**⚠️ ACADEMIC DISCLAIMER**: This tool was developed for coursework and educational purposes only. It demonstrates programming concepts in a cybersecurity context and should only be used for authorized educational testing in a virutal or lab environment where security can be ensured.
 
 ## Files
-- `server.py` - The listening server that receives connections and sends commands
+- `server.py` - Listens to incoming connection and when connected sends commands
 - `client.py` - The client that connects back to the server and executes commands
 
 ## Features
@@ -31,13 +30,13 @@ This educational tool consists of a server that listens for incoming connections
 - **Automatic IP Detection**: Shows network interface programming concepts
 - **OS Information Gathering**: Utilizes system information retrieval
 - **Persistent Connection Handling**: Implements retry mechanisms and error recovery
-- **Cross-platform Compatibility**: Works across different operating systems
+- **Cross-platform Compatibility**: Works across different operating systems (Multi-platform support)
 - **Command Execution Interface**: Demonstrates subprocess management
 - **Error Handling**: Comprehensive exception management throughout the codebase
 
 ## Programming Concepts Demonstrated
 - Socket programming and network communication
-- Exception handling and error recovery
+- Exception handling 
 - Cross-platform system interaction
 - Process management and subprocess control
 - String manipulation and data encoding
